@@ -1,3 +1,5 @@
 body{
     background-image: url('../Images/testbg.webp');
+    background-size: 20%;
+    image-rendering: pixelated;
 }
