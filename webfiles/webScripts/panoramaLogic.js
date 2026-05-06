@@ -46,7 +46,7 @@ scene.background = texture;
 function animate() {
     requestAnimationFrame(animate);
 
-    camera.rotation.y -= 0.0004;
+    camera.rotation.y -= 0.0002;
     camera.rotation.x = Math.sin(performance.now() * 0.00015) * 0.03;
 
     renderer.render(scene, camera);
