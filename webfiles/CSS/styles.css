@@ -21,21 +21,64 @@ html, body{
     z-index: 5;
 }
 
-#title-logo {
+#title-wrap {
     position: absolute;
-
-    top: 8%;                 /* distance from top */
+    top: 8%;
     left: 50%;
     transform: translateX(-50%);
 
-    width: 50vw;           /* adjust as needed */
-    max-width: 80vw;        /* keeps it responsive */
+    width: 50vw;
+    max-width: 80vw;
     min-width: 800px;
 
-    pointer-events: none;   /* lets clicks pass through if needed */
+    pointer-events: none;
 
     animation: float 4s ease-in-out infinite;
+}
 
+#title-logo {
+    width: 100%;
+    display: block;
+    pointer-events: none;
+}
+
+#splash-text {
+    position: absolute;
+
+    top: 60%;
+    left: 95%;
+
+    color: #00ff82;
+    font-family: Minecraft;
+    font-size: 34px;
+    line-height: 1.15;
+
+    white-space: nowrap;
+    text-align: center;
+
+    text-shadow: 2px 2px 0 #00542a;
+
+    width: max-content;
+    max-width: none;
+
+    transform: translateX(-50%) rotate(-20deg) scale(var(--splash-scale, 1));
+    transform-origin: top center;
+
+    animation: splash-bounce 0.55s ease-in-out infinite alternate;
+    pointer-events: auto;
+
+    cursor: default;
+}
+
+#splash-text.obfuscated-splash {
+    pointer-events: auto;
+    cursor: pointer;
+}
+
+#splash-text.obfuscated-splash:hover {
+    animation:
+            splash-bounce 0.55s ease-in-out infinite alternate,
+            obfuscated-color-cycle 0.7s linear infinite;
 }
 
 #menu {
@@ -190,6 +233,10 @@ button.mc-button {
     text-shadow: #006e6e 2px 2px 1px;
 }
 
+#submenu-title.color-cycle {
+    animation: obfuscated-color-cycle 0.7s linear infinite;
+}
+
 #submenu-list {
     width: min(700px, 85vw);
 
@@ -296,4 +343,13 @@ button.mc-button {
 
 .copy-btn:hover {
     border: 2px solid #00FFFF;
+}
+
+.obf-char {
+    display: inline-block;
+}
+
+.obf-word {
+    display: inline-block;
+    white-space: nowrap;
 }

@@ -48,15 +48,15 @@ const submenuData = {
         ]
     },
 
-    thirdThing: {
+    RCEItems: {
         title: "Commands to Give Items that Operate via the Remote Command Executor",
         type: "copy",
         searchable: true,
         items: [
             {
-            label: "Smokebomb...?",
-            icon: "/Images/SubMenus/RCEItemImages/Smokebomb.webp",
-            value: "{UNDER CONSTRUCTION}"
+                label: "Smokebomb...?",
+                icon: "/Images/SubMenus/RCEItemImages/Smokebomb.webp",
+                value: "{UNDER CONSTRUCTION}"
             },
             {
                 label: "Waypointer",
@@ -64,6 +64,14 @@ const submenuData = {
                 value: "{UNDER CONSTRUCTION}"
             }
         ]
+    },
+
+    debugMenu:{
+        title: "DEBUG - USER SHOULD NOT SEE THIS EVER",
+        type: "",
+        searchable: false,
+        obfuscated: true,
+        items: []
     }
 };
 
@@ -81,13 +89,34 @@ function initMenu() {
         return;
     }
 
-    function openSubmenu(menuKey) {
+    function openSubmenu(menuKey, options = {}) {
         const menu = submenuData[menuKey];
         if (!menu) return;
 
+        window.clearObfuscationForElement?.(submenuTitle);
+        window.clearObfuscationForElement?.(submenuBack);
+
+        submenuTitle.classList.remove("color-cycle");
+        submenuBack.classList.remove("color-cycle");
+
+        submenuTitle.removeAttribute("data-obfuscated");
+        submenuBack.removeAttribute("data-obfuscated");
+
         currentMenu = menu
 
-        submenuTitle.textContent = menu.title;
+        submenuTitle.textContent = options.title ?? menu.title;
+
+        if (menu.type === "") {
+            menu.type = options.type;
+        }
+
+        if (menu.obfuscated) {
+            submenuTitle.classList.add("color-cycle");
+            submenuTitle.setAttribute("data-obfuscated", "");
+            submenuBack.setAttribute("data-obfuscated", "");
+            window.initObfuscationForElement?.(submenuTitle);
+            window.initObfuscationForElement?.(submenuBack);
+        }
 
         if (menu.searchable) {
             submenuSearch.classList.remove("hidden");
@@ -97,11 +126,13 @@ function initMenu() {
             submenuSearch.classList.add("hidden");
         }
 
-        renderList(menu.items);
+        renderList(options.items ?? menu.items);
 
         mainMenu.classList.add("hidden");
         submenuScreen.classList.remove("hidden");
     }
+
+    window.openSubmenu = openSubmenu;
 
     function renderList(items) {
         submenuList.innerHTML = "";
@@ -138,6 +169,11 @@ function initMenu() {
     <span>${item.label}</span>
   `;
 
+        if (currentMenu?.obfuscated) {
+            const label = entry.querySelector("span");
+            label.setAttribute("data-obfuscated", "");
+            window.initObfuscationForElement?.(label);
+        }
         return entry;
     }
 
@@ -151,6 +187,15 @@ function initMenu() {
     <input class="copy-box" value="${item.value}" readonly>
     <button class="copy-btn"></button>
   `;
+
+        if (currentMenu?.obfuscated) {
+            const label = container.querySelector(".copy-label");
+            label.setAttribute("data-obfuscated", "");
+            window.initObfuscationForElement?.(label);
+
+            const input = container.querySelector(".copy-box");
+            input.value = item.value;
+        }
 
         const input = container.querySelector(".copy-box");
         const btn = container.querySelector(".copy-btn");

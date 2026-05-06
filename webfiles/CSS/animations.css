@@ -3,3 +3,39 @@
     50%  { transform: translate(-50%, 6px); }
     100% { transform: translate(-50%, 0px); }
 }
+
+@keyframes splash-bounce {
+    from {
+        transform: translateX(-50%) rotate(-20deg) scale(var(--splash-scale, 1));
+    }
+    to {
+        transform: translateX(-50%) rotate(-20deg) scale(calc(var(--splash-scale, 1) * 1.08));
+    }
+}
+
+@keyframes obfuscated-color-cycle {
+    0% {
+        color: #00ff82;
+        text-shadow: 2px 2px 0 #00542a;
+    }
+
+    25% {
+        color: #00ffff;
+        text-shadow: 2px 2px 0 #006e6e;
+    }
+
+    50% {
+        color: #ea00f8;
+        text-shadow: 2px 2px 0 #65006b;
+    }
+
+    75% {
+        color: #fff200;
+        text-shadow: 2px 2px 0 #6b6600;
+    }
+
+    100% {
+        color: #00ff82;
+        text-shadow: 2px 2px 0 #00542a;
+    }
+}

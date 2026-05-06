@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <title>Command Block Toolbox</title>
-  <link rel="preload" as="image" href="/Images/east.webp">
-  <link rel="preload" as="image" href="/Images/west.webp">
-  <link rel="preload" as="image" href="/Images/up.webp">
-  <link rel="preload" as="image" href="/Images/down.webp">
-  <link rel="preload" as="image" href="/Images/north.webp">
-  <link rel="preload" as="image" href="/Images/south.webp">
+  <link rel="preload" as="image" href="/Images/MainMenu/east.webp">
+  <link rel="preload" as="image" href="/Images/MainMenu/west.webp">
+  <link rel="preload" as="image" href="/Images/MainMenu/up.webp">
+  <link rel="preload" as="image" href="/Images/MainMenu/down.webp">
+  <link rel="preload" as="image" href="/Images/MainMenu/north.webp">
+  <link rel="preload" as="image" href="/Images/MainMenu/south.webp">
 
   <link rel="stylesheet" type="text/css" href="/CSS/fonts.css">
   <link rel="stylesheet" type="text/css" href="/CSS/animations.css">
@@ -19,12 +19,15 @@
   <div id="pano-bg"></div>
 
   <div id="main-menu">
-    <img id="title-logo" src="Images/MainMenu/pageTitle.webp">
+    <div id="title-wrap">
+      <img id="title-logo" src="/Images/MainMenu/pageTitle.webp">
+      <div id="splash-text"></div>
+    </div>
 
     <div id="menu">
       <a class="mc-button wide" data-menu="commandTools">Command Generation Tools</a>
       <a class="mc-button wide" data-menu="monolithAssemblers">Monolith Assemblers</a>
-      <a class="mc-button wide" data-menu="thirdThing">RCE Held Items</a>
+      <a class="mc-button wide" data-menu="RCEItems">RCE Held Items</a>
 
       <div class="menu-row">
         <a class="mc-button half" data-menu="contact">Contact Info</a>
@@ -51,6 +54,9 @@
     </div>
   </div>
 </body>
+<script type="module" src="/webScripts/audioLogic.js"></script>
+<script type="module" src="/webScripts/splashText.js"></script>
+<script type="module" src="/webScripts/obfuscatedTextAnim.js"></script>
 <script type="module" src="/webScripts/panoramaLogic.js"></script>
 <script type="module" src="/webScripts/menuLogic.js"></script>
 </html>
