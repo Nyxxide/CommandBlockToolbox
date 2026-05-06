@@ -1,0 +1,5 @@
+@keyframes float {
+    0%   { transform: translate(-50%, 0px); }
+    50%  { transform: translate(-50%, 6px); }
+    100% { transform: translate(-50%, 0px); }
+}

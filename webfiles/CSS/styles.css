@@ -1,5 +1,299 @@
-body{
-    background-image: url('../Images/testbg.webp');
-    background-size: 20%;
+html, body{
+    margin: 0;
+    height: 100%;
+    min-height: 100%;
+    background-color: #000;
+}
+
+#pano-bg {
+    position: fixed;
+    inset: 0;
+    overflow: hidden;
+}
+
+#pano-bg canvas {
+    transition: opacity 0.25s ease;
+}
+
+#main-menu {
+    position: fixed;
+    inset: 0;
+    z-index: 5;
+}
+
+#title-logo {
+    position: absolute;
+
+    top: 8%;                 /* distance from top */
+    left: 50%;
+    transform: translateX(-50%);
+
+    width: 50vw;           /* adjust as needed */
+    max-width: 80vw;        /* keeps it responsive */
+    min-width: 800px;
+
+    pointer-events: none;   /* lets clicks pass through if needed */
+
+    animation: float 4s ease-in-out infinite;
+
+}
+
+#menu {
+    position: absolute;
+    top: 42%;
+    left: 50%;
+    transform: translateX(-50%);
+
+    width: 30vw;
+    min-width: 600px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.menu-row {
+    margin-top: 40px;
+    display: flex;
+    gap: 12px;
+    width: 100%;
+}
+
+.mc-button {
+    height: 70px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+
+    background-image: url("../Images/MainMenu/CBTMenu.webp");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+
+    color: #00FFFF;
+    text-decoration: none;
+    font-size: 28px;
+    font-family: Minecraft;
+
+    text-shadow: #006e6e 2px 2px 1px;
+
+    border: #000018 4px solid;
+    /*outline: none;*/
+
     image-rendering: pixelated;
+    cursor: pointer;
+    user-select: none;
+}
+
+.mc-button.wide {
+    width: 100%;
+}
+
+.mc-button.half {
+    flex: 1 1 0;
+}
+
+.mc-button:hover {
+    border: #ea00f8 4px solid;
+}
+
+.newmoon-button {
+    gap: 0.35em;
+}
+
+.newmoon-icon {
+    height: 1em;
+    width: auto;
+
+    image-rendering: pixelated;
+    pointer-events: none;
+    transition: transform 0.25s ease, filter 0.25s ease;
+}
+
+.newmoon-button:hover .newmoon-icon {
+    transform: rotate(12deg) scale(1.2);
+    filter: brightness(1.4);
+}
+
+button.mc-button {
+    appearance: none;
+}
+
+.hidden {
+    display: none !important;
+}
+
+#submenu-screen {
+    position: fixed;
+    inset: 0;
+    z-index: 10;
+
+    display: flex;
+    flex-direction: column;
+
+    color: white;
+    font-family: Minecraft;
+}
+
+.submenu-section {
+    position: relative;
+    backdrop-filter: blur(4px);
+}
+
+.submenu-top {
+    height: 125px;
+    flex: 0 0 125px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    gap: 8px;
+
+    border-bottom: 2px solid rgba(255, 255, 255, 0.35);
+}
+
+.submenu-middle {
+    background: rgba(0, 0, 0, 0.45);
+
+    flex: 1 1 auto;
+
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+
+    padding-top: 28px;
+}
+
+.submenu-bottom {
+    background: rgba(0, 0, 30, 0.35);
+
+    height: 155px;
+    flex: 0 0 155px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-top: 2px solid rgba(255, 255, 255, 0.35);
+}
+
+#submenu-title {
+    margin: 0;
+    font-size: 32px;
+    font-weight: normal;
+
+
+    color: #00ffff;
+    text-shadow: #006e6e 2px 2px 1px;
+}
+
+#submenu-list {
+    width: min(700px, 85vw);
+
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.submenu-list-item {
+    min-height: 72px;
+
+    display: flex;
+    align-items: center;
+
+    padding: 0 20px;
+    gap: 12px;
+
+    color: white;
+    text-decoration: none;
+    font-size: 26px;
+    font-family: Minecraft;
+
+    text-shadow: #3f3f3f 2px 2px 1px;
+
+    cursor: pointer;
+    user-select: none;
+}
+
+.submenu-list-item:hover {
+    background: rgba(255, 255, 255, 0.15);
+}
+
+#submenu-back{
+    height: 70px;
+    flex: 0 0 auto;
+    width: min(200px, 40vw);
+}
+
+.submenu-icon {
+    width: 64px;
+    height: 64px;
+
+    flex: 0 0 64px;          /* prevents stretching/shrinking */
+    object-fit: contain;
+    image-rendering: pixelated;
+
+    margin-right: 16px;
+}
+
+#submenu-content {
+    width: min(700px, 85vw);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+#submenu-search {
+    height: 50px;
+    width: 500px;
+
+    padding: 0 12px;
+
+    font-size: 25px;
+    font-family: Minecraft;
+
+    color: #ffffff;
+    background: rgba(0, 0, 0, 0.6);
+
+    border: 3px solid #ffffff;
+    outline: none;
+
+    text-shadow: #3f3f3f 2px 2px 1px;
+}
+
+#submenu-search::placeholder {
+    color: #3f3f3f;
+    text-shadow: #151515 2px 2px 1px;
+}
+
+.copy-box {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px;
+    border: 3px solid rgba(255, 255, 255, 1);
+    color: #fff;
+    background: #000;
+    font-family: Minecraft;
+    font-size: 16px;
+}
+
+.copy-btn {
+    width: 30px;
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    border: 2px solid rgba(255, 255, 255, 1);
+    border-radius: 10px;
+    background-image: url("../Images/SubMenus/MiscImages/CopyBtn.webp");
+    background-size: cover;
+    cursor: pointer;
+}
+
+.copy-btn:hover {
+    border: 2px solid #00FFFF;
 }

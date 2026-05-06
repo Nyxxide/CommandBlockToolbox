@@ -3,10 +3,54 @@
 <head>
   <meta charset="UTF-8">
   <title>Command Block Toolbox</title>
+  <link rel="preload" as="image" href="/Images/east.webp">
+  <link rel="preload" as="image" href="/Images/west.webp">
+  <link rel="preload" as="image" href="/Images/up.webp">
+  <link rel="preload" as="image" href="/Images/down.webp">
+  <link rel="preload" as="image" href="/Images/north.webp">
+  <link rel="preload" as="image" href="/Images/south.webp">
+
+  <link rel="stylesheet" type="text/css" href="/CSS/fonts.css">
+  <link rel="stylesheet" type="text/css" href="/CSS/animations.css">
   <link rel="stylesheet" type="text/css" href="/CSS/styles.css">
-  <link id="favicon" rel="icon" type="image/x-icon" href="/Images/favicon.ico">
+  <link id="favicon" rel="icon" type="image/x-icon" href="/Images/MainMenu/CBToolbox.ico">
 </head>
 <body>
+  <div id="pano-bg"></div>
 
+  <div id="main-menu">
+    <img id="title-logo" src="Images/MainMenu/pageTitle.webp">
+
+    <div id="menu">
+      <a class="mc-button wide" data-menu="commandTools">Command Generation Tools</a>
+      <a class="mc-button wide" data-menu="monolithAssemblers">Monolith Assemblers</a>
+      <a class="mc-button wide" data-menu="thirdThing">RCE Held Items</a>
+
+      <div class="menu-row">
+        <a class="mc-button half" data-menu="contact">Contact Info</a>
+        <a class="mc-button half newmoon-button" href="https://nyxxusnovum.tv">
+          <span>Back to NewMoon</span>
+          <img class="newmoon-icon" src="/Images/MainMenu/NewMoon.webp">
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div id="submenu-screen" class="hidden">
+    <div class="submenu-section submenu-top">
+      <h1  id="submenu-title"></h1>
+      <input id="submenu-search" class="hidden" placeholder="Search..." />
+    </div>
+
+    <div class="submenu-section submenu-middle">
+      <div id="submenu-list"></div>
+    </div>
+
+    <div class="submenu-section submenu-bottom">
+      <button id="submenu-back" class="mc-button half">Back</button>
+    </div>
+  </div>
 </body>
+<script type="module" src="/webScripts/panoramaLogic.js"></script>
+<script type="module" src="/webScripts/menuLogic.js"></script>
 </html>
